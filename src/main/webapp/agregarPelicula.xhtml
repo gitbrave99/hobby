@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title><ui:insert name="title">Agregar pelicula</ui:insert></title>
+</h:head>
+
+<h:body>
+
+    <a href="hello-servlet">Hello Servlet</a>
+
+    <h:form id="CuentaListForm">
+        <p:panelGrid columns="2">
+            <h:outputLabel for="firstname" value="Firstname:" />
+            <p:inputText  label="Firstname" />
+            <h:outputLabel for="surname" value="Surname:" />
+            <p:inputText id="surname"  label="Surname"/>
+        </p:panelGrid>
+        <div class="ui-fluid">
+            <div class="field grid">
+                <p:outputLabel for="firstname" styleClass="col-3 md-2" value="Firstname" />
+                <div class="col-12 md-4">
+                    <p:inputText id="firstname" />
+                </div>
+            </div>
+            <div class="field grid">
+                <p:outputLabel for="lastname" styleClass="col-12 md-2" value="Lastname" />
+                <div class="col-12 md-10">
+                    <p:inputText id="lastname" />
+                </div>
+            </div>
+        </div>
+    </h:form>
+
+</h:body>
+</html>
