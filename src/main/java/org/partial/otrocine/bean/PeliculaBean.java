@@ -19,7 +19,7 @@ public class PeliculaBean {
 
     public void saludar(){
         this.mensaje="ok";
-        System.out.println("motrandmenaj");
+        System.out.println("motrandmenaj"+ nombre);
     }
 
     public String getMensaje() {

@@ -15,15 +15,15 @@ public class PeliculaService {
 
     private List<Pelicula> peliculas;
     private PeliculaDao peliculaDao;
+    private Pelicula pelicula=new Pelicula();
 
     @PostConstruct
     public void init() {
         this.peliculaDao = new PeliculaDao();
         //cars = new ArrayList<>();
         //cars.add(new Pelicula(1,"hulk","greeen man"));
-        System.out.println("obtenidno datos");
         this.peliculas=this.peliculaDao.getMovies();
-        this.peliculas.forEach(pelicula -> System.out.println(pelicula.getNombre()));
+        //this.peliculas.forEach(pelicula -> System.out.println(pelicula.getNombre()));
     }
 
     public List<Pelicula> getPeliculas() {
@@ -34,7 +34,19 @@ public class PeliculaService {
         this.peliculas = peliculas;
     }
 
-    public void agregarPelicula(Pelicula pelicula) {
+    public Pelicula getPelicula() {
+        return pelicula;
+    }
+
+    public void setPelicula(Pelicula pelicula) {
+        this.pelicula = pelicula;
+    }
+
+    public void agregarPelicula() {
+        System.out.println("agerando pelicul;a");
+        int id=this.peliculaDao.getLastId();
+        pelicula.setIdPelicula(id);
+        this.peliculaDao.agregarCliente(pelicula);
 
     }
 }

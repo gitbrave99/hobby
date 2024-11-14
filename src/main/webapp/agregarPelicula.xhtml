@@ -14,27 +14,11 @@
 
     <a href="hello-servlet">Hello Servlet</a>
 
-    <h:form id="CuentaListForm">
-        <p:panelGrid columns="2">
-            <h:outputLabel for="firstname" value="Firstname:" />
-            <p:inputText  label="Firstname" />
-            <h:outputLabel for="surname" value="Surname:" />
-            <p:inputText id="surname"  label="Surname"/>
-        </p:panelGrid>
-        <div class="ui-fluid">
-            <div class="field grid">
-                <p:outputLabel for="firstname" styleClass="col-3 md-2" value="Firstname" />
-                <div class="col-12 md-4">
-                    <p:inputText id="firstname" />
-                </div>
-            </div>
-            <div class="field grid">
-                <p:outputLabel for="lastname" styleClass="col-12 md-2" value="Lastname" />
-                <div class="col-12 md-10">
-                    <p:inputText id="lastname" />
-                </div>
-            </div>
-        </div>
+    <h:form>
+
+        <p:inputText id="nombre" value="#{peliculaService.pelicula.nombre}"/>
+        <p:inputText id="sinopsis" value="#{peliculaService.pelicula.sinopsis}"/>
+        <p:commandButton value="Nueva pelicula" actionListener="#{peliculaService.agregarPelicula()}"/>
     </h:form>
 
 </h:body>

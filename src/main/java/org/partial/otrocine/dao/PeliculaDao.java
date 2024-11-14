@@ -34,8 +34,24 @@ public class PeliculaDao extends Conexion {
         }finally {
             super.killConexion();
         }
-        System.out.println("obteniendo datos");
         return listProducto;
+    }
+
+    public int getLastId() {
+        String query = "select max(id_pelicula) from "+table;
+        int id=0;
+        try {
+            ps = super.getConexion().prepareStatement(query);
+            //ps.setString(1, nmCuenta);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                id = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR GET SALDO CUENTA: " + ex.getMessage());
+        }
+        return id;
     }
 
     public boolean eliminarProducto(int pIdCliente) {
@@ -56,11 +72,12 @@ public class PeliculaDao extends Conexion {
 
     public boolean agregarCliente(Pelicula cli) {
         boolean ingreso = false;
-        String query = "insert into "+table+" (nombre,sinopsis) values(?,?)";
+        String query = "insert into "+table+" (id_pelicula,nombre,sinopsis) values(?,?,?)";
         try {
             ps = super.getConexion().prepareStatement(query);
-            ps.setString(1, cli.getNombre());
-            ps.setString(2, cli.getSinopsis());
+            ps.setInt(1, cli.getIdPelicula()+1);
+            ps.setString(2, cli.getNombre());
+            ps.setString(3, cli.getSinopsis());
             ps.execute();
 
             System.out.println("INGRESO PELICULA");
@@ -68,7 +85,7 @@ public class PeliculaDao extends Conexion {
             return true;
 
         } catch (SQLException ex) {
-            System.out.println("ERROR INSER CLIENTE: " + ex.getMessage());
+            System.out.println("ERROR INSERT "+table+": " + ex.getMessage());
             ingreso = false;
         }finally {
             super.killConexion();
