@@ -46,6 +46,11 @@
             <version>6.4.4.Final</version> <!-- Asegúrate de que esta versión sea compatible -->
         </dependency>
         <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>font-awesome</artifactId>
+            <version>5.12.0</version>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.version}</version>

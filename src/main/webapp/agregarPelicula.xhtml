@@ -12,10 +12,28 @@
 <h:body>
     <ui:composition template="./template/template.xhtml">
         <ui:define name="content">
-            <h:form>
-                <p:inputText id="nombre" value="#{peliculaService.pelicula.nombre}"/>
-                <p:inputText id="sinopsis" value="#{peliculaService.pelicula.sinopsis}"/>
-                <p:commandButton value="Nueva pelicula" actionListener="#{peliculaService.agregarPelicula()}"/>
+            <h:form id="frmPrincipal">
+                <h:panelGroup id="pnlDetalle" rendered="#{peliculaBean.mostrarDetalles}">
+                    <h:panelGrid columns="2">
+                        <p:outputLabel value="ID" for="txtid"/>
+                        <p:inputText id="txtid" value="#{peliculaBean.id}" /> <!-- Asegúrate de tener un atributo 'id' en tu bean -->
+
+                        <p:outputLabel value="Nombre" for="txtNombre"/>
+                        <p:inputText id="txtNombre" value="#{peliculaBean.nombre}" size="70" />
+
+                        <p:outputLabel value="Sinopsis" for="txtSinopsis"/>
+                        <p:inputText id="txtSinopsis" value="#{peliculaBean.mensaje}" size="70" />
+                    </h:panelGrid>
+                </h:panelGroup>
+
+                <h:panelGroup id="pnlCaracteristicas" rendered="#{!peliculaBean.mostrarDetalles}">
+                    <span>hello world</span> <!-- Corrige el texto aquí -->
+                </h:panelGroup>
+
+                <!-- Botón para alternar entre los paneles -->
+                <p:commandButton value="Mostrar Características"
+                                 action="#{peliculaBean.toggleDetalles()}"
+                                 update="@form"/>
             </h:form>
         </ui:define>
     </ui:composition>

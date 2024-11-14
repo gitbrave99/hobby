@@ -12,25 +12,106 @@
 <h:body>
     <ui:composition template="./template/template.xhtml">
     <ui:define name="content">
-    <h:form id="CuentaListForm">
-        <p:dataTable var="car" value="#{peliculaService.peliculas}" paginator="true" rows="10">
-            <f:facet name="header">
-                <p:button value="Nueva pelicula" />
-            </f:facet>
-            <p:column headerText="ID">
-                #{car.idPelicula}
-            </p:column>
-            <p:column headerText="Nombre">
-                #{car.nombre}
-            </p:column>
-            <p:column headerText="Sinopsis">
-                #{car.sinopsis}
-            </p:column>
-            <p:column headerText="Sinopsis">
-                <p:button value="actualizar" />
-            </p:column>
-        </p:dataTable>
-    </h:form>
+        <h:form id="CuentaListForm">
+            <p:dataTable var="car" value="#{peliculaService.peliculas}" paginator="true" rows="10">
+                <f:facet name="header">
+                    <p:commandButton value="Nueva pelicula" type="button" onclick="PF('dlgpelicula').show()" />
+                </f:facet>
+                <p:column headerText="ID">
+                    #{car.idPelicula}
+                </p:column>
+                <p:column headerText="Nombre">
+                    #{car.nombre}
+                </p:column>
+                <p:column headerText="Sinopsis">
+                    #{car.sinopsis}
+                </p:column>
+                <p:column headerText="Sinopsis">
+                    <p:button value="actualizar" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+
+
+    <p:dialog header="" widgetVar="dlgpelicula" width="750" minimizable="true" maximizable="true" position="center">
+        <p:tabView>
+            <p:tab title="Generalidades">
+                <f:facet name="actions">
+                </f:facet>
+                <p class="m-0">
+                    <h:panelGroup id="pnlDetalle">
+                        <h:form id="frmDetalle">
+                            <h:panelGrid columns="2">
+                                <p:outputLabel value="ID" for="txtid"/>
+                                <p:inputText id="txtid" value="id" />
+
+                                <p:outputLabel value="Nombre" for="txtNombre"/>
+                                <p:inputText id="txtNombre" value="" size="70" />
+
+                                <p:outputLabel value="Sinopsis" for="txtSinopsis"/>
+                                <p:inputText id="txtSinopsis" value="" size="70" />
+                            </h:panelGrid>
+                            <h:panelGrid columns="2">
+                                <p:button value="Update Pelicula" />
+                                <p:button value="Delete Pelicula" />
+                            </h:panelGrid>
+                        </h:form>
+                    </h:panelGroup>
+                </p>
+            </p:tab>
+            <p:tab title="Catacteristicas">
+                <f:facet name="actions">
+
+                </f:facet>
+
+
+                <h:form id="frmcambios">
+                    <h:panelGroup id="pnlformulario" rendered="#{peliculaBean.mostrarDetalles}">
+                        <p:dataTable var="car" value="#{peliculaService.peliculas}" paginator="true" rows="1">
+                            <f:facet name="header">
+                                Caracteriticas de nombrePelicula
+                            </f:facet>
+                            <p:column headerText="ID">
+                                #{car.idPelicula}
+                            </p:column>
+                            <p:column headerText="Nombre">
+                                #{car.nombre}
+                            </p:column>
+                            <p:column headerText="Sinopsis">
+                                #{car.sinopsis}
+                            </p:column>
+                        </p:dataTable>
+                    </h:panelGroup>
+
+                    <h:panelGroup id="pnlCaracteristicas" rendered="#{!peliculaBean.mostrarDetalles}">
+                        <h:panelGrid columns="2">
+                            <p:outputLabel value="ID" for="idcaracteristica"/>
+                            <p:inputText id="idcaracteristica" value="" />
+
+                            <p:outputLabel value="ID" for="tipopeliculacarac"/>
+                            <p:selectOneMenu id="tipopeliculacarac" value="#{idiomaBean.idioma}" style="width:150px">
+                                <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true"/>
+                                <f:selectItems value="#{idiomaBean.idiomas}"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="ID" for="valorcarac"/>
+                            <p:inputTextarea id="valorcarac" value="" />
+                        </h:panelGrid>
+                    </h:panelGroup>
+
+
+
+                    <!-- Botón para alternar entre los paneles -->
+                    <p:commandButton value="Mostrar Características"
+                                     action="#{peliculaBean.toggleDetalles()}"
+                                     update="@form"/>
+                </h:form>
+
+            </p:tab>
+        </p:tabView>
+    </p:dialog>
+
     </ui:define>
     </ui:composition>
 </h:body>

@@ -8,30 +8,46 @@
       xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title><ui:insert name="title">Default Title</ui:insert></title>
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.css"/>
+    <h:outputStylesheet library="webjars" name="font-awesome/5.12.0/css/all.min-jsf.css" />
+    <h:outputStylesheet library="webjars" name="font-awesome/5.12.0/css/v4-shims.min-jsf.css" />
 </h:head>
 
 <h:body>
+
         <ui:insert name="top">
-            <p:menu overlay="true" trigger="btn" my="left top" at="bottom left">
-                <p:submenu label="Tipos">
-                    <p:menuitem value="Pago" url="http://www.google.com" />
-                    <p:menuitem value="Asiento" url="" />
-                    <p:menuitem value="Pelicula" url="tipopelicula.xhtml" />
-                    <p:menuitem value="Producto" url="http://www.google.com" />
-                    <p:menuitem value="Reserva" url="http://www.hotmail.com" />
-                    <p:menuitem value="Sala" url="http://mail.yahoo.com" />
-                </p:submenu>
-                <p:submenu label="Cine">
-                    <p:menuitem value="Pelicula" url="http://www.youtube.com" />
-                    <p:menuitem value="Sucursal" url="http://www.break.com" />
-                    <p:menuitem value="Sala" url="http://www.metacafe.com" />
-                    <p:menuitem value="Reserva" url="http://www.metacafe.com" />
-                </p:submenu>
-            </p:menu>
-            <p:commandButton id="btn" value="Show Menu" type="button"/>
+            <div class="flex justify-content-between flex-wrap">
+                <div class="flex align-items-center justify-content-center bg-primary font-bold border-round m-2">
+                    <p:menu overlay="true" trigger="btn" my="left top" at="bottom left">
+                        <p:submenu label="Tipos">
+                            <p:menuitem value="Pago" url="http://www.google.com" />
+                            <p:menuitem value="Asiento" url="" />
+                            <p:menuitem value="Pelicula" url="tipopelicula.xhtml" />
+                            <p:menuitem value="Producto" url="http://www.google.com" />
+                            <p:menuitem value="Reserva" url="http://www.hotmail.com" />
+                            <p:menuitem value="Sala" url="http://mail.yahoo.com" />
+                        </p:submenu>
+                        <p:submenu label="Cine">
+                            <p:menuitem value="Pelicula" url="http://www.youtube.com" />
+                            <p:menuitem value="Sucursal" url="http://www.break.com" />
+                            <p:menuitem value="Sala" url="http://www.metacafe.com" />
+                            <p:menuitem value="Reserva" url="http://www.metacafe.com" />
+                        </p:submenu>
+                    </p:menu>
+                    <p:commandButton id="btn" icon="fas fa-bars" type="button"/>
+                </div>
+                <div class="flex align-items-center justify-content-center">
+                    <p:selectOneMenu id="country" value="#{idiomaBean.idioma}" style="width:150px">
+                        <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{idiomaBean.idiomas}"/>
+                    </p:selectOneMenu>
+                </div>
+            </div>
+
         </ui:insert>
         <ui:insert name="content"></ui:insert>
-        <ui:insert name="bottom">botom</ui:insert>
+        <ui:insert name="bottom">
+    Derecho reservados
+        </ui:insert>
 </h:body>
-
 </html>
