@@ -9,17 +9,15 @@
 <h:head>
     <title><ui:insert name="title">Agregar pelicula</ui:insert></title>
 </h:head>
-
 <h:body>
-
-    <a href="hello-servlet">Hello Servlet</a>
-
-    <h:form>
-
-        <p:inputText id="nombre" value="#{peliculaService.pelicula.nombre}"/>
-        <p:inputText id="sinopsis" value="#{peliculaService.pelicula.sinopsis}"/>
-        <p:commandButton value="Nueva pelicula" actionListener="#{peliculaService.agregarPelicula()}"/>
-    </h:form>
-
+    <ui:composition template="./template/template.xhtml">
+        <ui:define name="content">
+            <h:form>
+                <p:inputText id="nombre" value="#{peliculaService.pelicula.nombre}"/>
+                <p:inputText id="sinopsis" value="#{peliculaService.pelicula.sinopsis}"/>
+                <p:commandButton value="Nueva pelicula" actionListener="#{peliculaService.agregarPelicula()}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>

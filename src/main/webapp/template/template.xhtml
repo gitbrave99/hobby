@@ -11,7 +11,27 @@
 </h:head>
 
 <h:body>
-
+        <ui:insert name="top">
+            <p:menu overlay="true" trigger="btn" my="left top" at="bottom left">
+                <p:submenu label="Tipos">
+                    <p:menuitem value="Pago" url="http://www.google.com" />
+                    <p:menuitem value="Asiento" url="" />
+                    <p:menuitem value="Pelicula" url="tipopelicula.xhtml" />
+                    <p:menuitem value="Producto" url="http://www.google.com" />
+                    <p:menuitem value="Reserva" url="http://www.hotmail.com" />
+                    <p:menuitem value="Sala" url="http://mail.yahoo.com" />
+                </p:submenu>
+                <p:submenu label="Cine">
+                    <p:menuitem value="Pelicula" url="http://www.youtube.com" />
+                    <p:menuitem value="Sucursal" url="http://www.break.com" />
+                    <p:menuitem value="Sala" url="http://www.metacafe.com" />
+                    <p:menuitem value="Reserva" url="http://www.metacafe.com" />
+                </p:submenu>
+            </p:menu>
+            <p:commandButton id="btn" value="Show Menu" type="button"/>
+        </ui:insert>
+        <ui:insert name="content"></ui:insert>
+        <ui:insert name="bottom">botom</ui:insert>
 </h:body>
 
 </html>
